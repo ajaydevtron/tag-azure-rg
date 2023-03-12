@@ -18,10 +18,10 @@ clientkey=sys.argv[6]
 # grace_Days=3
 
 # opening & authnetication of google sheet
-with open('./gcp/gcp.json') as source:
+with open('/gcp/gcp.json') as source:
     info = json.load(source)
 credentials = service_account.Credentials.from_service_account_info(info)
-client = pygsheets.authorize(service_account_file='./gcp/gcp.json')
+client = pygsheets.authorize(service_account_file='/gcp/gcp.json')
 sheet = client.open_by_key(clientkey)
 wks = sheet.worksheet_by_title('Sheet1')
 all_values = wks.get_all_values()
