@@ -71,7 +71,7 @@ allready_schedul_final=allready_schedul.split()
 def tag(rg_name,enddate):
     if rg_name not in allready_schedul_final:
         print("Need to tag",rg_name)
-        exit_status=os.system(f'az tag create --resource-id /subscriptions/{sub_id}/resourcegroups/{rg_name} --tags schedule-deletion={enddate}')
+        exit_status=os.system(f'az tag update --resource-id /subscriptions/{sub_id}/resourcegroups/{rg_name} --operation merge --tags schedule-deletion={enddate}')
         print(exit_status)
         if(exit_status==0):
             print("Tagged RG"+" --> "+ rg_name)
